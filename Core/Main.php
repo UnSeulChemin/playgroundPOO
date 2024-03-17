@@ -10,34 +10,24 @@ class Main
     {
         session_start();
 
-        // On récupère l'adresse
         $uri = $_SERVER['REQUEST_URI'];
 
-        // On exclu l'url localhost
 		if ($_SERVER['SERVER_NAME'] == 'localhost'):
 			$basename = "/playgroundPOO/";
 		else:
 			$basename = "";
 		endif;
 
-        // On vérifie si elle n'est pas vide et si elle se termine par un /
         if(!empty($uri) && $uri != '/' && $uri[-1] === '/' && $uri != $basename)
         {
-            // Dans ce cas on enlève le /
             $uri = substr($uri, 0, -1);
-
-            // On envoie une redirection permanente
             http_response_code(301);
-
-            // On redirige vers l'URL dans /
             header('Location: '.$uri);
             exit;
         }
 
-        // On sépare les paramètres et on les met dans le tableau $params
         $params = explode('/', $_GET['p']);
 
-        // Si au moins 1 paramètre existe
         if($params[0] != "")
         {
             // On sauvegarde le 1er paramètre dans $controller en mettant sa 1ère lettre en majuscule, en ajoutant le namespace des controleurs et en ajoutant "Controller" à la fin
@@ -57,7 +47,6 @@ class Main
             
             else
             {
-                // On envoie le code réponse 404
                 http_response_code(404);
                 echo "La page recherchée n'existe pas";
             }
