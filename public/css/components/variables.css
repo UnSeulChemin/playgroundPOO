@@ -1,0 +1,20 @@
+:root
+{
+    --background-color-body: #cbf6db;
+    --background-color-content: #aed6dc;
+    --background-color-menu: #4a536b;
+    --background-color-input: #f5f5ef;
+
+    --border-label: #F5F5DC;
+
+    --active: #6495ED;
+
+    --success-flash: #32CD32;
+    --warning-flash: #DC143C;
+
+    --white: #ffffff;
+    --black: #000000;
+    --grey: #333333;
+
+    --font-family: "Montserrat", "Open Sans", sans-serif;
+}

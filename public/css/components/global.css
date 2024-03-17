@@ -1,0 +1,143 @@
+/* Sumary (CTRL + F)
+Webkit, Scroll Bar
+*/
+
+/* Global */
+body
+{
+    font-family: var(--font-family);
+    text-align: center;
+    background-color: var(--background-color-body);
+
+    box-sizing: border-box;
+}
+
+header
+{
+    background-color: var(--background-color-content);
+
+    padding: 15px 20px;
+}
+
+main
+{
+    width: 90%;
+    background-color: var(--background-color-content);
+
+    margin: 25px auto;
+}
+
+h2
+{
+    font-size: 1.2em;
+
+    margin-bottom: 20px;
+}
+
+p
+{
+    font-size: 1.1em;
+
+    margin-bottom: 10px;
+}
+
+a
+{
+    font-size: 1.1em;
+    text-decoration: none;
+
+    display: inline-block;
+}
+
+form div
+{
+    margin-bottom: 20px;
+}
+
+form div input
+{
+    width: 250px;
+    background-color: var(--background-color-input);
+
+    padding: 5px;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+}
+
+form div input:focus
+{
+    background-color: var(--white);
+}
+
+label
+{
+    font-size: 1.1em;
+}
+
+/* Webkit */
+input::-webkit-input-placeholder
+{
+    font-size: 1.1em;
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+textarea::-webkit-input-placeholder
+{
+    font-size: 1.1em;
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+input::-moz-placeholder
+{
+    font-size: 1.1em;
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+textarea::-moz-placeholder
+{
+    font-size: 1.1em;
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+input:-ms-input-placeholder
+{
+    font-size: 1.1em;
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+textarea:-ms-input-placeholder
+{
+    font-size: 1.1em;
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+/* Scroll Bar */
+::-webkit-scrollbar
+{
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--background-color-menu);
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: var(--background-color-content);
+}
+
+@supports (scrollbar-color: var(--background-color-menu) var(--background-color-content))
+{
+    *
+    {
+        scrollbar-color: var(--background-color-menu) var(--background-color-content);
+        scrollbar-width: auto;
+    }
+}

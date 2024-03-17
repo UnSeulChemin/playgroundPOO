@@ -1,0 +1,232 @@
+/* Sumary (CTRL + F)
+Margin, Flash, Section, Article, Div, Flex
+*/
+
+/* Generic */
+.label-file
+{
+    cursor: pointer;
+    color: var(--white);
+    background-color: var(--active);
+
+    padding: 5px;
+    border: 5px solid var(--border-label);
+    border-radius: 5px;
+}
+
+.figure-card
+{
+    border: 3px solid var(--active);
+}
+
+.figure-card img
+{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.none
+{
+    display: none;
+}
+
+/* Link */
+.link-menu
+{
+    width: 100px;
+    color: var(--background-color-content);
+    background-color: var(--background-color-menu);
+
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.link-menu:hover
+{
+    color: var(--black);
+    background-color: var(--white);
+}
+
+.link-form
+{
+    cursor: pointer;
+    width: 120px;
+    font-size: 1.1em;
+    font-family: var(--font-family);
+    color: var(--background-color-content);
+    background-color: var(--background-color-menu);
+
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.link-form:hover
+{
+    opacity: 0.9;
+    color: var(--black);
+}
+
+.link-paginate
+{
+    width: 20px;
+    color: var(--background-color-content);
+    background-color: var(--background-color-menu);
+
+    margin-right: 15px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.link-paginate:last-child
+{
+    margin-right: 0;
+}
+
+/* Margin */
+.margin-right-li
+{
+    margin-right: 15px;
+}
+
+.margin-top
+{
+    margin-top: 20px;
+}
+
+.margin-bottom
+{
+    margin-bottom: 20px;
+}
+
+.margin-none
+{
+    margin: 0;
+}
+
+/* Flash */
+.warning-flash
+{
+    width: 30%;
+    background-color: var(--warning-flash);
+
+    margin: 0 auto 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.warning-flash p
+{
+    margin-bottom: 0;
+}
+
+.success-flash
+{
+    width: 30%;    
+    background-color: var(--success-flash);
+
+    margin: 0 auto 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.success-flash p
+{
+    margin-bottom: 0;
+}
+
+.active
+{
+    color: var(--active);
+}
+
+/* Section */
+.section-content
+{
+    padding: 30px 0;
+}
+
+.section-card
+{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Article */
+.article-content
+{
+    width: 80%;
+
+    margin: 0 auto 30px;
+    padding: 20px 0;
+    border: 3px solid var(--active);
+    border-radius: 5px;
+}
+
+.article-content:last-of-type
+{
+    margin-bottom: 0;
+}
+
+.article-content p:last-of-type
+{
+    margin-bottom: 15px;
+}
+
+/* Div */
+.div-content p:last-child
+{
+    margin-bottom: 0;
+}
+
+.div-card
+{
+    width: 21%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-card-content
+{
+    width: 100%;
+    height: auto;
+
+    box-sizing: border-box;
+
+    padding: 10px;
+    border-right: 3px solid var(--active);
+    border-left: 3px solid var(--active);
+    border-bottom: 3px solid var(--active);
+}
+
+/* Flex */
+.flex
+{
+    display: flex;
+}
+
+.flex-center
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
