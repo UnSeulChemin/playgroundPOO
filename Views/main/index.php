@@ -1,0 +1,1 @@
+<?php $titre = "Page d'accueil"; ?>
