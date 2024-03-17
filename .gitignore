@@ -1,5 +1,5 @@
 # clear cache
-# git rm -rf --cached .
+# git rm -r --cached .
 # git add .
 
 Core/Db.php
