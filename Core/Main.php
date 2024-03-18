@@ -34,10 +34,10 @@ class Main
             $controller = '\\App\\Controllers\\'.ucfirst(array_shift($params)).'Controller';
 
             $action = isset($params[0]) ? array_shift($params) : 'index';
-            $controller = new $controller();
 
             if(method_exists($controller, $action))
             {
+                $controller = new $controller();
                 (isset($params[0])) ? call_user_func_array([$controller,$action], $params) : $controller->$action();
             }
             
