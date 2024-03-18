@@ -38,7 +38,7 @@ class Model extends Db
         $fields = [];
         $values = [];
 
-        foreach($criteres as $champ => $value)
+        foreach ($criteres as $champ => $value)
         {
             $fields[] = "$champ = ?";
             $values[] = $value;
@@ -60,7 +60,7 @@ class Model extends Db
         $inter = [];
         $values = [];
 
-        foreach($this as $champ => $value)
+        foreach ($this as $champ => $value)
         {
             if($value !== null && $champ != 'db' && $champ != 'table')
             {
@@ -81,7 +81,7 @@ class Model extends Db
         $fields = [];
         $values = [];
 
-        foreach($this as $champ => $value)
+        foreach ($this as $champ => $value)
         {
             if ($value !== null && $champ != 'db' && $champ != 'table')
             {
