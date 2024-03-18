@@ -32,7 +32,7 @@ class UsersController extends Controller
     }
 
 
-    
+
     public function login()
     {
         if(Form::validate($_POST, ['email', 'password']))
@@ -66,12 +66,10 @@ class UsersController extends Controller
         $form = new Form;
 
         $form->startForm()
-            ->addLabelFor('email', 'Email')
-            ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control'])
-            ->addLabelFor('password', 'Mot de passe')
-            ->addInput('password', 'password', ['id' => 'password', 'class' => 'form-control'])
-            ->addButton('Me connecter', ['class' => 'btn btn-primary'])
-            ->endForm();
+            ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email'])->endDiv()
+            ->startDiv()->addInput('password', 'password', ['placeholder' => 'Password'])->endDiv()
+            ->addButton('Login', ['type' => 'submit', 'class' => 'link-form'])
+        ->endForm();
 
         $this->render('users/login', ['loginForm' => $form->create()]);
     }
