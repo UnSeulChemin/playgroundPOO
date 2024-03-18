@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Controllers\MainController;
+use Exception;
 
 class Main
 {
@@ -43,7 +44,9 @@ class Main
             else
             {
                 http_response_code(404);
-                echo "Page doesn't exist.";
+                $value = "Page doesn't exist.";
+                setcookie("404", $value, time()+3600);
+                header("Location: ./");
             }
         }
         
