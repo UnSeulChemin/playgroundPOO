@@ -13,9 +13,10 @@ class UsersController extends Controller
         {
             $email = strip_tags($_POST['email']);
             $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
+            $roles = ['ROLE_USER'];
 
             $user = new UsersModel;
-            $user->setEmail($email)->setPassword($password);
+            $user->setEmail($email)->setPassword($password)->setRoles($roles);
             $user->create();
         }
 

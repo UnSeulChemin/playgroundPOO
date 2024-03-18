@@ -65,17 +65,14 @@ class UsersModel extends Model
         return $this;
     }
 
-    public function getRoles(): array
+    public function getRoles()
     {
-        $roles = $this->roles;
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     public function setRoles($roles)
     {
-        $this->roles = json_decode($roles);
+        $this->roles = json_encode($roles);
 
         return $this;
     }
