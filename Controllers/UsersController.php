@@ -23,12 +23,10 @@ class UsersController extends Controller
         $form = new Form;
 
         $form->startForm()
-            ->addLabelFor('email', 'E-mail :')
-            ->addInput('email', 'email', ['class' => 'form-control', 'id' => 'email'])
-            ->addLabelFor('pass', 'Mot de passe :')
-            ->addInput('password', 'password', ['id' => 'pass', 'class' => 'form-control'])
-            ->addButton('M\'inscrire', ['class' => 'btn btn-primary'])
-            ->endForm();
+            ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email'])->endDiv()
+            ->startDiv()->addInput('password', 'password', ['placeholder' => 'Password'])->endDiv()
+            ->addButton('Register', ['type' => 'submit', 'class' => 'link-form'])
+        ->endForm();
 
         $this->render('users/register', ['registerForm' => $form->create()]);
     }

@@ -57,6 +57,18 @@ class Form
         return $this;
     }
 
+    public function startDiv(): self
+    {
+        $this->formCode .= '<div>';
+        return $this;
+    }
+
+    public function endDiv(): self
+    {
+        $this->formCode .= '</div>';
+        return $this;
+    }
+
     public function addLabelFor(string $for, string $text, array $attributes = []): self
     {
         $this->formCode .= "<label for='$for'";
