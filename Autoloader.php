@@ -14,14 +14,13 @@ class Autoloader
     static function autoload($class)
     {
         $class = str_replace(__NAMESPACE__ . "\\", "", $class);
+        $class = str_replace("\\", "/", $class);
 
-        $class = str_replace("\\", "/", $class); 
+        $file = __DIR__ . "/" . $class . ".php";
 
-        $fichier = __DIR__ . "/" . $class . ".php";
-
-        if (file_exists($fichier))
+        if (file_exists($file))
         {
-            require_once $fichier;
+            require_once $file;
         }
     }
 }
