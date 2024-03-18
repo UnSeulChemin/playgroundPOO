@@ -20,7 +20,6 @@ class Form
                 return false;
             }
         }
-    
         return true;
     }
 
@@ -42,7 +41,6 @@ class Form
                 $str .= " $attribute=\"$value\"";
             }
         }
-
         return $str;
     }
 
@@ -53,39 +51,38 @@ class Form
         return $this;
     }
 
-    public function endForm():self
+    public function endForm(): self
     {
         $this->formCode .= '</form>';
         return $this;
     }
 
-    public function addLabelFor(string $for, string $text, array $attributes = []):self
+    public function addLabelFor(string $for, string $text, array $attributes = []): self
     {
         $this->formCode .= "<label for='$for'";
         $this->formCode .= $attributes ? $this->addAttributes($attributes) : '';
         $this->formCode .= ">$text</label>";
-
         return $this;
     }
 
-    public function addInput(string $type, string $nom, array $attributes = []): self
+    public function addInput(string $type, string $name, array $attributes = []): self
     {
-        $this->formCode .= "<input type='$type' name='$nom'";
+        $this->formCode .= "<input type='$type' name='$name'";
         $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';
         return $this;
     }
 
-    public function addTextarea(string $nom, string $value = '', array $attributes = []):self
+    public function addTextarea(string $name, string $value = '', array $attributes = []): self
     {
-        $this->formCode .= "<textarea name='$nom'";
+        $this->formCode .= "<textarea name='$name'";
         $this->formCode .= $attributes ? $this->addAttributes($attributes) : '';
         $this->formCode .= ">$value</textarea>";
         return $this;
     }
 
-    public function addSelect(string $nom, array $options, array $attributes = []):self
+    public function addSelect(string $name, array $options, array $attributes = []):self
     {
-        $this->formCode .= "<select name='$nom'";
+        $this->formCode .= "<select name='$name'";
         $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';
 
         foreach($options as $value => $text)
