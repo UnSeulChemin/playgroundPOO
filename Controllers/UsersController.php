@@ -49,7 +49,7 @@ class UsersController extends Controller
             if (password_verify($_POST['password'], $user->getPassword()))
             {
                 $user->setSession();
-                header("Location: ../main");
+                header("Location: .././");
             }
 
             else
