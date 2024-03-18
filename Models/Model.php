@@ -38,9 +38,9 @@ class Model extends Db
         $fields = [];
         $values = [];
 
-        foreach ($criteres as $champ => $value)
+        foreach ($criteres as $field => $value)
         {
-            $fields[] = "$champ = ?";
+            $fields[] = "$field = ?";
             $values[] = $value;
         }
 
@@ -60,11 +60,11 @@ class Model extends Db
         $inter = [];
         $values = [];
 
-        foreach ($this as $champ => $value)
+        foreach ($this as $field => $value)
         {
-            if($value !== null && $champ != 'db' && $champ != 'table')
+            if($value !== null && $field != 'db' && $field != 'table')
             {
-                $fields[] = $champ;
+                $fields[] = $field;
                 $inter[] = "?";
                 $values[] = $value;
             }
@@ -81,11 +81,11 @@ class Model extends Db
         $fields = [];
         $values = [];
 
-        foreach ($this as $champ => $value)
+        foreach ($this as $field => $value)
         {
-            if ($value !== null && $champ != 'db' && $champ != 'table')
+            if ($value !== null && $field != 'db' && $field != 'table')
             {
-                $fields[] = "$champ = ?";
+                $fields[] = "$field = ?";
                 $values[] = $value;
             }
         }
@@ -101,9 +101,9 @@ class Model extends Db
         return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
     }
 
-    public function hydrate($donnees)
+    public function hydrate($datas)
     {
-        foreach ($donnees as $key => $value)
+        foreach ($datas as $key => $value)
         {
             $method = 'set'.ucfirst($key);
             
