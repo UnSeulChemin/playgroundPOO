@@ -33,6 +33,11 @@ class UsersController extends Controller
         $this->render('users/register', ['registerForm' => $form->create()]);
     }
 
+
+
+
+
+    
     public function login()
     {
         if(Form::validate($_POST, ['email', 'password']))
