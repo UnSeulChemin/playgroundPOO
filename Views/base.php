@@ -3,7 +3,16 @@ function test()
 {
     if (str_contains($_GET["p"], "/"))
     {
-        return "../";
+        if (substr_count($_GET["p"], "/") == 1)
+        {
+            return "../";
+        }
+
+        else
+        {
+            return "../../";
+        }
+
     }
 
     return null;

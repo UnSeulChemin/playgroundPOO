@@ -13,4 +13,12 @@ class ShipsController extends Controller
 
         $this->render("ships/index", ["ships" => $ships]);
     }
+
+    public function show(int $id)
+    {
+        $model = new ShipsModel;
+        $ship = $model->find($id);
+
+        $this->render('ships/show', ["ship" => $ship]);
+    }
 }

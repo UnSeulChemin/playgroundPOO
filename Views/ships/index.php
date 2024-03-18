@@ -6,7 +6,9 @@
         <?php foreach($ships as $ship): ?>
             <div class="div-card">
                 <figure class="figure-card">
-                    <img src="public/images/ships/<?= $ship->image.".".$ship->extension ?>">
+                    <a href="ships/show/<?= $ship->id ?>">
+                        <img src="public/images/ships/<?= $ship->image.".".$ship->extension ?>">
+                    </a>
                 </figure>
                 <div class="div-card-content">
                     <p class="margin-none"><?= $ship->name ?></p>
