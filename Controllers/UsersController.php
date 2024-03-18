@@ -37,9 +37,9 @@ class UsersController extends Controller
             $userModel = new UsersModel;
             $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
 
-            if(!$userArray)
+            if (!$userArray)
             {
-                $_SESSION["erreur"] = "L'adresse e-mail et/ou le mot de passe est incorrect";
+                $_SESSION["warning"] = "Email and / or password is incorrect.";
                 header('Location: login');
                 exit;
             }
@@ -54,7 +54,7 @@ class UsersController extends Controller
 
             else
             {
-                $_SESSION["erreur"] = "L'adresse e-mail et/ou le mot de passe est incorrect";
+                $_SESSION["warning"] = "Email and / or password is incorrect.";
                 header('Location: login');
                 exit;    
             }
