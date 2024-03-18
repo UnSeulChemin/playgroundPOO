@@ -39,7 +39,7 @@ class UsersController extends Controller
 
             if(!$userArray)
             {
-                http_response_code(404);
+                $_SESSION["erreur"] = "L'adresse e-mail et/ou le mot de passe est incorrect";
                 header('Location: login');
                 exit;
             }
