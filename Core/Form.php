@@ -30,26 +30,26 @@ class Form
 
         $shorts = ['checked', 'disabled', 'readonly', 'multiple', 'required', 'autofocus', 'novalidate', 'formnovalidate'];
 
-        foreach($attributes as $attribute => $valeur)
+        foreach($attributes as $attribute => $value)
         {
-            if(in_array($attribute, $shorts) && $valeur == true)
+            if(in_array($attribute, $shorts) && $value == true)
             {
                 $str .= " $attribute";
             }
             
             else
             {
-                $str .= " $attribute=\"$valeur\"";
+                $str .= " $attribute=\"$value\"";
             }
         }
 
         return $str;
     }
 
-    public function startForm(string $methode = 'post', string $action = '#', array $attributs = []): self
+    public function startForm(string $method = 'post', string $action = '#', array $attributes = []): self
     {
-        $this->formCode .= "<form action='$action' method='$methode'";
-        $this->formCode .= $attributs ? $this->addAttributes($attributs).'>' : '>';
+        $this->formCode .= "<form action='$action' method='$method'";
+        $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';
         return $this;
     }
 
@@ -59,49 +59,49 @@ class Form
         return $this;
     }
 
-    public function addLabelFor(string $for, string $texte, array $attributs = []):self
+    public function addLabelFor(string $for, string $text, array $attributes = []):self
     {
         $this->formCode .= "<label for='$for'";
-        $this->formCode .= $attributs ? $this->addAttributes($attributs) : '';
-        $this->formCode .= ">$texte</label>";
+        $this->formCode .= $attributes ? $this->addAttributes($attributes) : '';
+        $this->formCode .= ">$text</label>";
 
         return $this;
     }
 
-    public function addInput(string $type, string $nom, array $attributs = []): self
+    public function addInput(string $type, string $nom, array $attributes = []): self
     {
         $this->formCode .= "<input type='$type' name='$nom'";
-        $this->formCode .= $attributs ? $this->addAttributes($attributs).'>' : '>';
+        $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';
         return $this;
     }
 
-    public function addTextarea(string $nom, string $valeur = '', array $attributs = []):self
+    public function addTextarea(string $nom, string $value = '', array $attributes = []):self
     {
         $this->formCode .= "<textarea name='$nom'";
-        $this->formCode .= $attributs ? $this->addAttributes($attributs) : '';
-        $this->formCode .= ">$valeur</textarea>";
+        $this->formCode .= $attributes ? $this->addAttributes($attributes) : '';
+        $this->formCode .= ">$value</textarea>";
         return $this;
     }
 
-    public function addSelect(string $nom, array $options, array $attributs = []):self
+    public function addSelect(string $nom, array $options, array $attributes = []):self
     {
         $this->formCode .= "<select name='$nom'";
-        $this->formCode .= $attributs ? $this->addAttributes($attributs).'>' : '>';
+        $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';
 
-        foreach($options as $valeur => $texte)
+        foreach($options as $value => $text)
         {
-            $this->formCode .= "<option value=\"$valeur\">$texte</option>";
+            $this->formCode .= "<option value=\"$value\">$text</option>";
         }
 
         $this->formCode .= '</select>';
         return $this;
     }
 
-    public function addBouton(string $texte, array $attributs = []): self
+    public function addButton(string $text, array $attributes = []): self
     {
         $this->formCode .= '<button ';
-        $this->formCode .= $attributs ? $this->addAttributes($attributs) : '';
-        $this->formCode .= ">$texte</button>";
+        $this->formCode .= $attributes ? $this->addAttributes($attributes) : '';
+        $this->formCode .= ">$text</button>";
         return $this;
     }
 }

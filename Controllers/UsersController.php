@@ -27,15 +27,11 @@ class UsersController extends Controller
             ->addInput('email', 'email', ['class' => 'form-control', 'id' => 'email'])
             ->addLabelFor('pass', 'Mot de passe :')
             ->addInput('password', 'password', ['id' => 'pass', 'class' => 'form-control'])
-            ->addBouton('M\'inscrire', ['class' => 'btn btn-primary'])
+            ->addButton('M\'inscrire', ['class' => 'btn btn-primary'])
             ->endForm();
 
         $this->render('users/register', ['registerForm' => $form->create()]);
     }
-
-
-
-
 
     public function login()
     {
@@ -74,7 +70,7 @@ class UsersController extends Controller
             ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control'])
             ->addLabelFor('password', 'Mot de passe')
             ->addInput('password', 'password', ['id' => 'password', 'class' => 'form-control'])
-            ->addBouton('Me connecter', ['class' => 'btn btn-primary'])
+            ->addButton('Me connecter', ['class' => 'btn btn-primary'])
             ->endForm();
 
         $this->render('users/login', ['loginForm' => $form->create()]);
