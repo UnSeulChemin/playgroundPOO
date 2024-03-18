@@ -8,7 +8,7 @@ class Main
 {
     public function start()
     {
-        // session_start();
+        session_start();
 
         $uri = $_SERVER['REQUEST_URI'];
 
@@ -33,7 +33,6 @@ class Main
             $controller = '\\App\\Controllers\\'.ucfirst(array_shift($params)).'Controller';
 
             $action = isset($params[0]) ? array_shift($params) : 'index';
-
             $controller = new $controller();
 
             if(method_exists($controller, $action))
@@ -44,7 +43,7 @@ class Main
             else
             {
                 http_response_code(404);
-                echo "La page recherchée n'existe pas";
+                echo "Page doesn't exist.";
             }
         }
         
