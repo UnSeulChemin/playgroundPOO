@@ -10,14 +10,14 @@ class Model extends Db
 
     private $db;
 
-    public function requete(string $sql, array $attributs = null)
+    public function requete(string $sql, array $attributes = null)
     {
         $this->db = Db::getInstance();
 
-        if ($attributs !== null)
+        if ($attributes !== null)
         {
             $query = $this->db->prepare($sql);
-            $query->execute($attributs);
+            $query->execute($attributes);
             return $query;
         }
 
@@ -35,18 +35,18 @@ class Model extends Db
 
     public function findBy(array $criteres)
     {
-        $champs = [];
-        $valeurs = [];
+        $fields = [];
+        $values = [];
 
-        foreach($criteres as $champ => $valeur)
+        foreach($criteres as $champ => $value)
         {
-            $champs[] = "$champ = ?";
-            $valeurs[] = $valeur;
+            $fields[] = "$champ = ?";
+            $values[] = $value;
         }
 
-        $liste_champs = implode(' AND ', $champs);
+        $liste_fields = implode(' AND ', $fields);
 
-        return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs)->fetchAll();
+        return $this->requete("SELECT * FROM {$this->table} WHERE $liste_fields", $values)->fetchAll();
     }
 
     public function find(int $id)
@@ -56,44 +56,44 @@ class Model extends Db
 
     public function create()
     {
-        $champs = [];
+        $fields = [];
         $inter = [];
-        $valeurs = [];
+        $values = [];
 
-        foreach($this as $champ => $valeur)
+        foreach($this as $champ => $value)
         {
-            if($valeur !== null && $champ != 'db' && $champ != 'table')
+            if($value !== null && $champ != 'db' && $champ != 'table')
             {
-                $champs[] = $champ;
+                $fields[] = $champ;
                 $inter[] = "?";
-                $valeurs[] = $valeur;
+                $values[] = $value;
             }
         }
 
-        $liste_champs = implode(', ', $champs);
+        $liste_fields = implode(', ', $fields);
         $liste_inter = implode(', ', $inter);
 
-        return $this->requete('INSERT INTO '.$this->table.' ('. $liste_champs.')VALUES('.$liste_inter.')', $valeurs);
+        return $this->requete('INSERT INTO '.$this->table.' ('. $liste_fields.')VALUES('.$liste_inter.')', $values);
     }
 
     public function update()
     {
-        $champs = [];
-        $valeurs = [];
+        $fields = [];
+        $values = [];
 
-        foreach($this as $champ => $valeur)
+        foreach($this as $champ => $value)
         {
-            if($valeur !== null && $champ != 'db' && $champ != 'table')
+            if($value !== null && $champ != 'db' && $champ != 'table')
             {
-                $champs[] = "$champ = ?";
-                $valeurs[] = $valeur;
+                $fields[] = "$champ = ?";
+                $values[] = $value;
             }
         }
-        $valeurs[] = $this->id;
+        $values[] = $this->id;
 
-        $liste_champs = implode(', ', $champs);
+        $liste_fields = implode(', ', $fields);
 
-        return $this->requete('UPDATE '.$this->table.' SET '. $liste_champs.' WHERE id = ?', $valeurs);
+        return $this->requete('UPDATE '.$this->table.' SET '. $liste_fields.' WHERE id = ?', $values);
     }
 
     public function delete(int $id)
