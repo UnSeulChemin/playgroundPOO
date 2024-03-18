@@ -44,9 +44,9 @@ class Model extends Db
             $values[] = $value;
         }
 
-        $liste_fields = implode(' AND ', $fields);
+        $list_fields = implode(' AND ', $fields);
 
-        return $this->requete("SELECT * FROM {$this->table} WHERE $liste_fields", $values)->fetchAll();
+        return $this->requete("SELECT * FROM {$this->table} WHERE $list_fields", $values)->fetchAll();
     }
 
     public function find(int $id)
@@ -70,10 +70,10 @@ class Model extends Db
             }
         }
 
-        $liste_fields = implode(', ', $fields);
-        $liste_inter = implode(', ', $inter);
+        $list_fields = implode(', ', $fields);
+        $list_inter = implode(', ', $inter);
 
-        return $this->requete('INSERT INTO '.$this->table.' ('. $liste_fields.')VALUES('.$liste_inter.')', $values);
+        return $this->requete('INSERT INTO '.$this->table.' ('. $list_fields.')VALUES('.$list_inter.')', $values);
     }
 
     public function update()
@@ -83,7 +83,7 @@ class Model extends Db
 
         foreach($this as $champ => $value)
         {
-            if($value !== null && $champ != 'db' && $champ != 'table')
+            if ($value !== null && $champ != 'db' && $champ != 'table')
             {
                 $fields[] = "$champ = ?";
                 $values[] = $value;
@@ -91,9 +91,9 @@ class Model extends Db
         }
         $values[] = $this->id;
 
-        $liste_fields = implode(', ', $fields);
+        $list_fields = implode(', ', $fields);
 
-        return $this->requete('UPDATE '.$this->table.' SET '. $liste_fields.' WHERE id = ?', $values);
+        return $this->requete('UPDATE '.$this->table.' SET '. $list_fields.' WHERE id = ?', $values);
     }
 
     public function delete(int $id)
