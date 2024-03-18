@@ -9,7 +9,7 @@ class UsersController extends Controller
 {
     public function register()
     {
-        if(Form::validate($_POST, ['email', 'password']))
+        if (Form::validate($_POST, ['email', 'password']))
         {
             $email = strip_tags($_POST['email']);
             $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
@@ -32,7 +32,7 @@ class UsersController extends Controller
 
     public function login()
     {
-        if(Form::validate($_POST, ['email', 'password']))
+        if (Form::validate($_POST, ['email', 'password']))
         {
             $userModel = new UsersModel;
             $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
@@ -46,7 +46,7 @@ class UsersController extends Controller
 
             $user = $userModel->hydrate($userArray);
 
-            if(password_verify($_POST['password'], $user->getPassword()))
+            if (password_verify($_POST['password'], $user->getPassword()))
             {
                 $user->setSession();
                 header("Location: ../main");
