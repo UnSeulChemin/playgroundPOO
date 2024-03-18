@@ -31,8 +31,6 @@ class UsersController extends Controller
         $this->render('users/register', ['registerForm' => $form->create()]);
     }
 
-
-
     public function login()
     {
         if(Form::validate($_POST, ['email', 'password']))
@@ -79,5 +77,5 @@ class UsersController extends Controller
         unset($_SESSION['user']);
         header('Location: '. $_SERVER['HTTP_REFERER']);
         exit;
-    }    
+    }
 }
