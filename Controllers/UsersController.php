@@ -12,11 +12,10 @@ class UsersController extends Controller
         if(Form::validate($_POST, ['email', 'password']))
         {
             $email = strip_tags($_POST['email']);
-            $pass = password_hash($_POST['password'], PASSWORD_ARGON2I);
+            $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
             $user = new UsersModel;
-            $user->setEmail($email)
-                ->setPassword($pass);
+            $user->setEmail($email)->setPassword($password);
             $user->create();
         }
 
