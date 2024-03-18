@@ -191,7 +191,7 @@ Margin, Flash, Section, Article, Div, Flex
 
 .div-card
 {
-    width: 21%;
+    /* width: 21%; */
 
     display: flex;
     flex-direction: column;

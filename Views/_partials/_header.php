@@ -11,6 +11,7 @@
                         <a class="link-menu" href="admin">Admin</a>
                     </li>
                 <?php endif; ?>
+                <li class="margin-right-li"><a class="link-menu" href="<?= test(); ?>ships">Ships</a></li>
                 <li class="margin-right-li"><a class="link-menu" href="<?= test(); ?>users/logout">Logout</a></li>
             <?php else: ?>
                 <li class="margin-right-li"><a class="link-menu" href="<?= test(); ?>users/register">Register</a></li>
