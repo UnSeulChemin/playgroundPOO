@@ -5,8 +5,8 @@
         </div>
 
         <ul class="flex">
-            <li class="margin-right-li"><a class="link-menu" href="users/register">Register</a></li>
-            <li><a class="link-menu" href="users/login">Login</a></li>
+            <li class="margin-right-li"><a class="link-menu" href="<?= test(); ?>users/register">Register</a></li>
+            <li><a class="link-menu" href="<?= test(); ?>users/login">Login</a></li>
         </ul>
     </nav>
 </header>
