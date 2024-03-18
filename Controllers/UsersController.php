@@ -22,7 +22,7 @@ class UsersController extends Controller
         $form = new Form;
 
         $form->startForm()
-            ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email'])->endDiv()
+            ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email', 'autofocus' => true])->endDiv()
             ->startDiv()->addInput('password', 'password', ['placeholder' => 'Password'])->endDiv()
             ->addButton('Register', ['type' => 'submit', 'class' => 'link-form'])
         ->endForm();
@@ -63,7 +63,7 @@ class UsersController extends Controller
         $form = new Form;
 
         $form->startForm()
-            ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email'])->endDiv()
+            ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email', 'autofocus' => true])->endDiv()
             ->startDiv()->addInput('password', 'password', ['placeholder' => 'Password'])->endDiv()
             ->addButton('Login', ['type' => 'submit', 'class' => 'link-form'])
         ->endForm();
