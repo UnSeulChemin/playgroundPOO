@@ -7,16 +7,16 @@ class ShipsController extends Controller
 {
     public function index()
     {
-        $model = new ShipsModel;
-        $ships = $model->findAll();
+        $shipModel = new ShipsModel;
+        $ships = $shipModel->findAll();
 
         $this->render("ships/index", ["ships" => $ships]);
     }
 
     public function show(int $id)
     {
-        $model = new ShipsModel;
-        $ship = $model->find($id);
+        $shipModel = new ShipsModel;
+        $ship = $shipModel->find($id);
 
         $this->render('ships/show', ["ship" => $ship]);
     }

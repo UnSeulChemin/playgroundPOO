@@ -19,10 +19,11 @@ class UsersController extends Controller
 
             if ($userModel->create())
             {
-                $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
+                $userArray = $userModel->findOneByEmail($email);
                 $user = $userModel->hydrate($userArray);
                 $user->setSession();
                 header("Location: .././");
+                exit;
             }
         }
 
@@ -39,7 +40,7 @@ class UsersController extends Controller
             ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email', 'autofocus' => true])->endDiv()
             ->startDiv()->addInput('password', 'password', ['placeholder' => 'Password'])->endDiv()
             ->addButton('Register', ['type' => 'submit', 'class' => 'link-form'])
-        ->endForm();
+            ->endForm();
 
         $this->render('users/register', ['registerForm' => $form->create()]);
     }
@@ -48,30 +49,40 @@ class UsersController extends Controller
     {
         if (Form::validate($_POST, ['email', 'password']))
         {
+            $email = strip_tags($_POST['email']);
+            $password = strip_tags($_POST['password']);
+
             $userModel = new UsersModel;
-            $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
+            $userArray = $userModel->findOneByEmail($email);
 
-            if (!$userArray)
+            if ($userArray)
             {
-                $_SESSION["warning"] = "Email and / or password is incorrect.";
-                header('Location: login');
-                exit;
-            }
+                $user = $userModel->hydrate($userArray);
 
-            $user = $userModel->hydrate($userArray);
-
-            if (password_verify($_POST['password'], $user->getPassword()))
-            {
-                $user->setSession();
-                header("Location: .././");
+                if (password_verify($password, $user->getPassword()))
+                {
+                    $user->setSession();
+                    header("Location: .././");
+                    exit;
+                }
+    
+                else
+                {
+                    $_SESSION["warning"] = "Email and / or password is incorrect.";
+                }
             }
 
             else
             {
                 $_SESSION["warning"] = "Email and / or password is incorrect.";
-                header('Location: login');
-                exit;    
             }
+        }
+
+        else
+        {
+            $_SESSION['warning'] = !empty($_POST) ? "Form is empty." : '';
+            $email = isset($_POST['email']) ? strip_tags($_POST['email']) : '';
+            $password = isset($_POST['password']) ? strip_tags($_POST['password']) : '';
         }
 
         $form = new Form;
@@ -80,7 +91,7 @@ class UsersController extends Controller
             ->startDiv()->addInput('email', 'email', ['placeholder' => 'Email', 'autofocus' => true])->endDiv()
             ->startDiv()->addInput('password', 'password', ['placeholder' => 'Password'])->endDiv()
             ->addButton('Login', ['type' => 'submit', 'class' => 'link-form'])
-        ->endForm();
+            ->endForm();
 
         $this->render('users/login', ['loginForm' => $form->create()]);
     }
