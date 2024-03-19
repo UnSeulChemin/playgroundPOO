@@ -14,9 +14,16 @@ class UsersController extends Controller
             $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
             $roles = ['ROLE_USER'];
 
-            $user = new UsersModel;
-            $user->setEmail($email)->setPassword($password)->setRoles($roles);
-            $user->create();
+            $userModel = new UsersModel;
+            $userModel->setEmail($email)->setPassword($password)->setRoles($roles);
+
+            if ($userModel->create())
+            {
+                $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
+                $user = $userModel->hydrate($userArray);
+                $user->setSession();
+                header("Location: .././");
+            }
         }
 
         else
