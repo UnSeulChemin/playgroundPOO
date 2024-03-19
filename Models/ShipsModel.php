@@ -22,7 +22,6 @@ class ShipsModel extends Model
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -34,7 +33,6 @@ class ShipsModel extends Model
     public function setImage($image)
     {
         $this->image = $image;
-
         return $this;
     }
 
@@ -46,7 +44,6 @@ class ShipsModel extends Model
     public function setExtension($extension)
     {
         $this->extension = $extension;
-
         return $this;
     }
 
@@ -58,7 +55,6 @@ class ShipsModel extends Model
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -70,7 +66,6 @@ class ShipsModel extends Model
     public function setCreated_at($created_at)
     {
         $this->created_at = $created_at;
-
         return $this;
     }
 }

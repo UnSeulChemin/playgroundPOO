@@ -35,7 +35,6 @@ class UsersModel extends Model
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -47,7 +46,6 @@ class UsersModel extends Model
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -59,7 +57,6 @@ class UsersModel extends Model
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -71,7 +68,6 @@ class UsersModel extends Model
     public function setRoles($roles)
     {
         $this->roles = json_encode($roles);
-
         return $this;
     }
 }

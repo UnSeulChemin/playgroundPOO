@@ -32,12 +32,12 @@ class Model extends Db
         return $query->fetchAll();
     }
 
-    public function findBy(array $criteres)
+    public function findBy(array $targets)
     {
         $fields = [];
         $values = [];
 
-        foreach ($criteres as $field => $value)
+        foreach ($targets as $field => $value)
         {
             $fields[] = "$field = ?";
             $values[] = $value;
@@ -61,7 +61,7 @@ class Model extends Db
 
         foreach ($this as $field => $value)
         {
-            if($value !== null && $field != 'db' && $field != 'table')
+            if ($value !== null && $field != 'db' && $field != 'table')
             {
                 $fields[] = $field;
                 $inter[] = "?";
