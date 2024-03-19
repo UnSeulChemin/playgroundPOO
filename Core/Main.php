@@ -44,6 +44,7 @@ class Main
                 $value = "Page doesn't exist.";
                 setcookie("404", $value, time()+3600);
                 header("Location: ./");
+                exit;
             }
         }
         

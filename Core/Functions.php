@@ -3,6 +3,15 @@ namespace App\Core;
 
 class Functions
 {
+    public static function sessionUser(): bool
+    {
+        if (isset($_SESSION['user']) && !empty($_SESSION['user']['id']))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public static function pathRedirect()
     {
         if (str_contains($_GET["p"], "/"))
