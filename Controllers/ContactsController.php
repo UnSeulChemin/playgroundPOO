@@ -8,13 +8,12 @@ class ContactsController extends Controller
 {
     public function index()
     {
-        if(Form::validate($_POST, ['title', 'description']))
+        if (Form::validate($_POST, ['title', 'description']))
         {
             $title = strip_tags($_POST['title']);
             $description = strip_tags($_POST['description']);
 
             $contact = new ContactsModel;
-
             $contact->setTitle($title)->setDescription($description);
             $contact->create();
 

@@ -19,6 +19,13 @@ class UsersController extends Controller
             $user->create();
         }
 
+        else
+        {
+            $_SESSION['warning'] = !empty($_POST) ? "Form is empty." : '';
+            $email = isset($_POST['email']) ? strip_tags($_POST['email']) : '';
+            $password = isset($_POST['password']) ? strip_tags($_POST['password']) : '';
+        }
+
         $form = new Form;
 
         $form->startForm()
