@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
+use App\Core\Functions;
 use App\Models\UsersModel;
 
 class UsersController extends Controller
@@ -99,7 +100,7 @@ class UsersController extends Controller
     public function logout()
     {
         unset($_SESSION['user']);
-        header('Location: '. $_SERVER['HTTP_REFERER']);
+        header('Location: '.Functions::pathRedirect().'./');
         exit;
     }
 }
