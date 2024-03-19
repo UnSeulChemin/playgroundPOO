@@ -1,31 +1,12 @@
-<?php
-function test()
-{
-    if (str_contains($_GET["p"], "/"))
-    {
-        if (substr_count($_GET["p"], "/") == 1)
-        {
-            return "../";
-        }
-
-        else
-        {
-            return "../../";
-        }
-
-    }
-
-    return null;
-} ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlaygroundPOO <?= $title ?? ""; ?></title>
-	<link rel="shortcut icon" type="image/png" href="<?= test(); ?>public/images/favicon/favicon.png">
-	<link rel="stylesheet" type="text/css" href="<?= test(); ?>public/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="<?= test(); ?>public/css/app.css">
+	<link rel="shortcut icon" type="image/png" href="<?= $pathRedirect; ?>public/images/favicon/favicon.png">
+	<link rel="stylesheet" type="text/css" href="<?= $pathRedirect; ?>public/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="<?= $pathRedirect; ?>public/css/app.css">
 </head>
 <body>
 
