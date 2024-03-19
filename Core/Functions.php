@@ -21,6 +21,15 @@ class Functions
         return false;
     }
 
+    public static function sessionAdmin(): bool
+    {
+        if (isset($_SESSION["user"]) && str_contains($_SESSION['user']['roles'], 'ROLE_ADMIN'))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public static function pathRedirect()
     {
         if (str_contains($_GET["p"], "/"))

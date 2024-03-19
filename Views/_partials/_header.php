@@ -5,8 +5,8 @@
         </div>
 
         <ul class="flex">
-            <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"]["id"])): ?>
-                <?php if (str_contains($_SESSION['user']['roles'], 'ROLE_ADMIN')): ?>
+            <?php if ($sessionUser): ?>
+                <?php if ($sessionAdmin): ?>
                     <li class="margin-right-li">
                         <a class="link-menu" href="admin">Admin</a>
                     </li>
