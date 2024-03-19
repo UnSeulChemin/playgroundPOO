@@ -12,9 +12,9 @@ class Form
 
     public static function validate(array $form, array $fields)
     {
-        foreach($fields as $field)
+        foreach ($fields as $field)
         {
-            if(!isset($form[$field]) || empty($form[$field]))
+            if (!isset($form[$field]) || empty($form[$field]))
             {
                 return false;
             }
@@ -24,23 +24,22 @@ class Form
 
     private function addAttributes(array $attributes): string
     {
-        $str = '';
-
+        $string = '';
         $shorts = ['checked', 'disabled', 'readonly', 'multiple', 'required', 'autofocus', 'novalidate', 'formnovalidate'];
 
-        foreach($attributes as $attribute => $value)
+        foreach ($attributes as $attribute => $value)
         {
-            if(in_array($attribute, $shorts) && $value == true)
+            if (in_array($attribute, $shorts) && $value == true)
             {
-                $str .= " $attribute";
+                $string .= " $attribute";
             }
             
             else
             {
-                $str .= " $attribute=\"$value\"";
+                $string .= " $attribute=\"$value\"";
             }
         }
-        return $str;
+        return $string;
     }
 
     public function startForm(string $method = 'post', string $action = '#', array $attributes = []): self
@@ -96,7 +95,7 @@ class Form
         $this->formCode .= "<select name='$name'";
         $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';
 
-        foreach($options as $value => $text)
+        foreach ($options as $value => $text)
         {
             $this->formCode .= "<option value=\"$value\">$text</option>";
         }
