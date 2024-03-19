@@ -2,7 +2,6 @@
 namespace App\Core;
 
 use App\Controllers\MainController;
-use Exception;
 
 class Main
 {
@@ -18,7 +17,7 @@ class Main
 			$basename = "";
 		endif;
 
-        if(!empty($uri) && $uri != '/' && $uri[-1] === '/' && $uri != $basename)
+        if (!empty($uri) && $uri != '/' && $uri[-1] === '/' && $uri != $basename)
         {
             $uri = substr($uri, 0, -1);
             http_response_code(301);
@@ -28,13 +27,12 @@ class Main
 
         $params = explode('/', $_GET['p']);
 
-        if($params[0] != "")
+        if ($params[0] != "")
         {
             $controller = '\\App\\Controllers\\'.ucfirst(array_shift($params)).'Controller';
-
             $action = isset($params[0]) ? array_shift($params) : 'index';
 
-            if(method_exists($controller, $action))
+            if (method_exists($controller, $action))
             {
                 $controller = new $controller();
                 (isset($params[0])) ? call_user_func_array([$controller,$action], $params) : $controller->$action();
