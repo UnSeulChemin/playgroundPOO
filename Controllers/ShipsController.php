@@ -10,6 +10,7 @@ class ShipsController extends Controller
         $shipModel = new ShipsModel;
         $ships = $shipModel->findAll();
 
+        $this->title = 'PlaygroundPOO | Ships';
         $this->render("ships/index", ["ships" => $ships]);
     }
 
@@ -18,6 +19,7 @@ class ShipsController extends Controller
         $shipModel = new ShipsModel;
         $ship = $shipModel->find($id);
 
+        $this->title = 'PlaygroundPOO | '.$ship->name;
         $this->render('ships/show', ["ship" => $ship]);
     }
 }

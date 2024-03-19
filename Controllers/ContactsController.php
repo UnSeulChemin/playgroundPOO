@@ -39,6 +39,7 @@ class ContactsController extends Controller
             ->addButton('Validate', ['type' => 'submit', 'class' => 'link-form'])
             ->endForm();
 
+        $this->title = 'PlaygroundPOO | Contacts';
         $this->render("contacts/index", ['contactForm' => $form->create()]);
     }
 }

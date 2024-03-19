@@ -6,6 +6,7 @@ use App\Core\Functions;
 abstract class Controller
 {
     protected $template = 'base';
+    protected $title = 'PlaygroundPOO';
 
     public function render(string $file, array $data = [])
     {
@@ -13,6 +14,7 @@ abstract class Controller
 
         ob_start();
         require_once(ROOT.'/Views/'.$file.'.php');
+        $title = $this->title;
         $pathRedirect = Functions::pathRedirect();
         $content = ob_get_clean();
 

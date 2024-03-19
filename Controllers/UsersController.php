@@ -43,6 +43,7 @@ class UsersController extends Controller
             ->addButton('Register', ['type' => 'submit', 'class' => 'link-form'])
             ->endForm();
 
+        $this->title = 'PlaygroundPOO | Register';
         $this->render('users/register', ['registerForm' => $form->create()]);
     }
 
@@ -94,6 +95,7 @@ class UsersController extends Controller
             ->addButton('Login', ['type' => 'submit', 'class' => 'link-form'])
             ->endForm();
 
+        $this->title = 'PlaygroundPOO | Login';
         $this->render('users/login', ['loginForm' => $form->create()]);
     }
 
