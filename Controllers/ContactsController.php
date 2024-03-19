@@ -13,13 +13,15 @@ class ContactsController extends Controller
             $title = strip_tags($_POST['title']);
             $description = strip_tags($_POST['description']);
 
-            $contact = new ContactsModel;
-            $contact->setTitle($title)->setDescription($description);
-            $contact->create();
+            $contactModel = new ContactsModel;
+            $contactModel->setTitle($title)->setDescription($description);
 
-            $_SESSION["validate"] = "Contact has been successfully sent.";
-            header("Location: contacts");
-            exit;
+            if ($contactModel->create())
+            {
+                $_SESSION["validate"] = "Contact has been successfully sent.";
+                header("Location: contacts");
+                exit;
+            }
         }
 
         else
