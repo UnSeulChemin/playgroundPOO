@@ -11,11 +11,12 @@ class ShipsController extends Controller
         if (Functions::sessionUser())
         {
             $shipModel = new ShipsModel;
+            $pathRedirect = Functions::pathRedirect();
             $ships = $shipModel->findAllPaginate();
             $counts = $shipModel->countsPaginate();
     
             $this->title = 'PlaygroundPOO | Ships';
-            $this->render("ships/index", ["ships" => $ships, "counts" => $counts]);
+            $this->render("ships/index", ["ships" => $ships, "counts" => $counts, "pathRedirect" => $pathRedirect]);
         }
 
         else
@@ -30,11 +31,12 @@ class ShipsController extends Controller
         if (Functions::sessionUser())
         {
             $shipModel = new ShipsModel;
+            $pathRedirect = Functions::pathRedirect();
             $ships = $shipModel->findAllPaginate($id);
             $counts = $shipModel->countsPaginate();
         
             $this->title = 'PlaygroundPOO | Ships';
-            $this->render("ships/index", ["ships" => $ships, "counts" => $counts]);
+            $this->render("ships/index", ["ships" => $ships, "counts" => $counts, "pathRedirect" => $pathRedirect]);
         }
 
         else
