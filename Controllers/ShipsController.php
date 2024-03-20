@@ -34,6 +34,12 @@ class ShipsController extends Controller
             $pathRedirect = Functions::pathRedirect();
             $ships = $shipModel->findAllPaginate($id);
             $counts = $shipModel->countsPaginate();
+
+            if (basename($_GET['p']) > $counts)
+            {
+                header('Location: ../users/ships/');
+                exit;
+            }  
         
             $this->title = 'PlaygroundPOO | Ships';
             $this->render("ships/index", ["ships" => $ships, "counts" => $counts, "pathRedirect" => $pathRedirect]);
