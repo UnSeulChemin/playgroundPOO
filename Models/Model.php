@@ -100,6 +100,30 @@ class Model extends Db
         return $this->requete("DELETE FROM {$this->table} WHERE id = ?", [$id]);
     }
 
+    public function findAllPaginate(int $id = 1)
+    {
+        $eachPerPage = 8;
+        $start = ($id -1) * $eachPerPage;
+    
+        $query = $this->requete("SELECT * FROM {$this->table} ORDER BY `id` DESC LIMIT " . $start . ", " . $eachPerPage);
+        return $query->fetchAll();
+    }
+
+    public function countsPaginate()
+    {
+        $query = $this->requete("SELECT COUNT(*) AS `count` FROM {$this->table}");
+
+        if ($query->rowCount() > 0)
+        {
+            $countTotal = $query->fetch();
+        }
+
+        $eachPerPage = 8;
+
+        $counts = ceil($countTotal->count / $eachPerPage);
+        return $counts;
+    }
+
     public function hydrate($datas)
     {
         foreach ($datas as $key => $value)

@@ -19,4 +19,22 @@
             </div>
         <?php endforeach; ?>
     </section>
+
+    <nav class="flex-center margin-top">
+        <?php for ($count = 1; $count <= $counts; $count++): ?>
+
+            <?php if (!isset($getId)): $getId = 1; endif;
+
+            if ($getId != $count):
+                if (isset($_GET["id"]) && !empty($_GET["id"])): ?>
+                    <a class="link-paginate" href="../page/<?php echo $count; ?>"><?php echo $count; ?></a>               
+                <?php else: ?>
+                    <a class="link-paginate" href="ships/page/<?php echo $count; ?>"><?php echo $count; ?></a>
+                <?php endif; ?>
+            <?php else: ?>
+                <a class="link-paginate active"><?php echo $count; ?></a>
+            <?php endif; ?>
+
+        <?php endfor; ?>
+    </nav>
 </section>

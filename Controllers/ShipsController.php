@@ -11,15 +11,35 @@ class ShipsController extends Controller
         if (Functions::sessionUser())
         {
             $shipModel = new ShipsModel;
-            $ships = $shipModel->findAll();
+            $ships = $shipModel->findAllPaginate();
+            $counts = $shipModel->countsPaginate();
     
             $this->title = 'PlaygroundPOO | Ships';
-            $this->render("ships/index", ["ships" => $ships]);
+            $this->render("ships/index", ["ships" => $ships, "counts" => $counts]);
         }
 
         else
         {
             header('Location: users/login');
+            exit;
+        }
+    }
+
+    public function page(int $id)
+    {
+        if (Functions::sessionUser())
+        {
+            $shipModel = new ShipsModel;
+            $ships = $shipModel->findAllPaginate($id);
+            $counts = $shipModel->countsPaginate();
+        
+            $this->title = 'PlaygroundPOO | Ships';
+            $this->render("ships/index", ["ships" => $ships, "counts" => $counts]);
+        }
+
+        else
+        {
+            header('Location: ../users/login');
             exit;
         }
     }
