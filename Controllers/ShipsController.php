@@ -52,7 +52,13 @@ class ShipsController extends Controller
         {
             $shipModel = new ShipsModel;
             $ship = $shipModel->find($id);
-    
+
+            if (!$ship)
+            {
+                header('Location: ../users/ships/');
+                exit;
+            }
+
             $this->title = 'PlaygroundPOO | '.$ship->name;
             $this->render('ships/show', ["ship" => $ship]);
         }
