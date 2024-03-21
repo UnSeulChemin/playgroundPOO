@@ -41,7 +41,7 @@ class ShipsController extends Controller
                 exit;
             }  
         
-            $this->title = 'PlaygroundPOO | Ships';
+            $this->title = 'PlaygroundPOO | Ships | '.$id;
             $this->render("ships/index", ["ships" => $ships, "counts" => $counts, "pathRedirect" => $pathRedirect]);
         }
 
@@ -65,7 +65,7 @@ class ShipsController extends Controller
                 exit;
             }
 
-            $this->title = 'PlaygroundPOO | '.$ship->name;
+            $this->title = 'PlaygroundPOO | Ships | '.$ship->name;
             $this->render('ships/show', ["ship" => $ship]);
         }
 

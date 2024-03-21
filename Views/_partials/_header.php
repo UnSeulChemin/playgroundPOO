@@ -7,9 +7,7 @@
         <ul class="flex">
             <?php if ($sessionUser): ?>
                 <?php if ($sessionAdmin): ?>
-                    <li class="margin-right-li">
-                        <a class="link-menu" href="admin">Admin</a>
-                    </li>
+                    <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>admin">Admin</a></li>
                 <?php endif; ?>
                 <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>ships">Ships</a></li>
                 <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>contacts">Contacts</a></li>
