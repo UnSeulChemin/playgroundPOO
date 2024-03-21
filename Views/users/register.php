@@ -2,7 +2,7 @@
 
     <h2>Register</h2>
 
-    <?php if(!empty($_SESSION["warning"])): ?>
+    <?php if (isset($_SESSION["warning"]) && !empty($_SESSION["warning"])): ?>
         <div class="warning-flash">
             <p><?= $_SESSION["warning"]; unset($_SESSION["warning"]); ?></p>
         </div>
