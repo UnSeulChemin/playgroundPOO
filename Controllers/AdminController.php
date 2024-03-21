@@ -9,12 +9,13 @@ class AdminController extends Controller
     {
         if (Functions::sessionAdmin())
         {
-            $this->render('main/index');
+            $this->title = 'PlaygroundPOO | Admin';
+            $this->render('admin/index');
         }
 
         else
         {
-            header('Location: '.Functions::pathRedirect().'./');
+            header('Location: users/login');
             exit;
         }
     }
