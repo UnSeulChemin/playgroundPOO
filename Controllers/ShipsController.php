@@ -57,6 +57,7 @@ class ShipsController extends Controller
         if (Functions::sessionUser())
         {
             $shipModel = new ShipsModel;
+            $pathRedirect = Functions::pathRedirect();
             $ship = $shipModel->find($id);
 
             if (!$ship)
@@ -66,7 +67,7 @@ class ShipsController extends Controller
             }
 
             $this->title = 'PlaygroundPOO | Ships | '.$ship->name;
-            $this->render('ships/show', ["ship" => $ship]);
+            $this->render('ships/show', ["ship" => $ship, "pathRedirect" => $pathRedirect]);
         }
 
         else

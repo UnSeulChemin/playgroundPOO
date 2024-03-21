@@ -5,7 +5,7 @@
     <section class="section-card">
         <div class="div-card">
             <figure class="figure-card">
-                <img src="../../public/images/ships/<?= $ship->image.".".$ship->extension ?>">
+                <img src="<?= $pathRedirect; ?>public/images/ships/<?= $ship->image.".".$ship->extension ?>">
             </figure>
             <div class="div-card-content">
                 <p class="margin-none"><?= $ship->name ?></p>
