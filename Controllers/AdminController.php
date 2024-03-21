@@ -41,6 +41,30 @@ class AdminController extends Controller
         }
     }
 
+    public function contact(int $id)
+    {
+        if (Functions::sessionAdmin())
+        {
+            $contactModel = new ContactsModel;
+            $contact = $contactModel->find($id);
+
+            if (!$contact)
+            {
+                header('Location: ../contacts');
+                exit;
+            }
+
+            $this->title = 'PlaygroundPOO | Admin | Contact | '.$contact->id;
+            $this->render('admin/contact', ["contact" => $contact]);
+        }
+
+        else
+        {
+            header('Location: users/login');
+            exit;
+        }
+    }
+
     public function updateContact(int $id)
     {
         if (Functions::sessionAdmin())

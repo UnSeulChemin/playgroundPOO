@@ -8,7 +8,7 @@
             <p><?= $contact->description ?></p>
             <p><?= date('d/m/Y', strtotime($contact->created_at)); ?></p>
             <div class="margin-bottom">
-                <a class="link-form" href="<?= $pathRedirect; ?>contacts/<?= $contact->id ?>">Preview</a>
+                <a class="link-form" href="<?= $pathRedirect; ?>admin/contact/<?= $contact->id ?>">Preview</a>
             </div>
             <div class="margin-bottom">
                 <a class="link-form" href="<?= $pathRedirect; ?>admin/updateContact/<?= $contact->id ?>">Update</a>

@@ -26,6 +26,31 @@ class ShipsController extends Controller
         }
     }
 
+    public function ship(int $id)
+    {
+        if (Functions::sessionUser())
+        {
+            $shipModel = new ShipsModel;
+            $pathRedirect = Functions::pathRedirect();
+            $ship = $shipModel->find($id);
+
+            if (!$ship)
+            {
+                header('Location: ../users/ships');
+                exit;
+            }
+
+            $this->title = 'PlaygroundPOO | Ship | '.$ship->name;
+            $this->render('ships/show', ["ship" => $ship, "pathRedirect" => $pathRedirect]);
+        }
+
+        else
+        {
+            header('Location: ../users/login');
+            exit;
+        }
+    }
+
     public function page(int $id)
     {
         if (Functions::sessionUser())
@@ -43,31 +68,6 @@ class ShipsController extends Controller
         
             $this->title = 'PlaygroundPOO | Ships | '.$id;
             $this->render("ships/index", ["ships" => $ships, "counts" => $counts, "pathRedirect" => $pathRedirect]);
-        }
-
-        else
-        {
-            header('Location: ../users/login');
-            exit;
-        }
-    }
-
-    public function show(int $id)
-    {
-        if (Functions::sessionUser())
-        {
-            $shipModel = new ShipsModel;
-            $pathRedirect = Functions::pathRedirect();
-            $ship = $shipModel->find($id);
-
-            if (!$ship)
-            {
-                header('Location: ../users/ships');
-                exit;
-            }
-
-            $this->title = 'PlaygroundPOO | Ships | '.$ship->name;
-            $this->render('ships/show', ["ship" => $ship, "pathRedirect" => $pathRedirect]);
         }
 
         else

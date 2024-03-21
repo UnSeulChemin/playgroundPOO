@@ -6,7 +6,7 @@
         <?php foreach($ships as $ship): ?>
             <div class="div-card">
                 <figure class="figure-card">
-                    <a class="flex" href="<?= $pathRedirect; ?>ships/show/<?= $ship->id ?>">
+                    <a class="flex" href="<?= $pathRedirect; ?>ships/ship/<?= $ship->id ?>">
                         <img src="<?= $pathRedirect; ?>public/images/ships/<?= $ship->image.".".$ship->extension ?>">
                     </a>
                 </figure>

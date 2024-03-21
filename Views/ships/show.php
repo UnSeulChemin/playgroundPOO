@@ -1,6 +1,6 @@
 <section class="section-content">
 
-    <h2>Ships</h2>
+    <h2>Ship</h2>
    
     <section class="section-card">
         <div class="div-card">
