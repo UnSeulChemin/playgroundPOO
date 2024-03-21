@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Core\Form;
 use App\Core\Functions;
 use App\Models\ContactsModel;
 
@@ -31,6 +32,69 @@ class AdminController extends Controller
 
             $this->title = 'PlaygroundPOO | Admin | Contacts';
             $this->render("admin/contacts", ["contacts" => $contacts, "pathRedirect" => $pathRedirect]);
+        }
+
+        else
+        {
+            header('Location: users/login');
+            exit;
+        }
+    }
+
+    public function updateContact(int $id)
+    {
+        if (Functions::sessionAdmin())
+        {
+            $contactModel = new ContactsModel;
+            $contact = $contactModel->find($id);
+            
+            if (!$contact)
+            {
+                header('Location: ../contacts');
+                exit;
+            }
+
+            if (Form::validate($_POST, ['title', 'description']))
+            {
+                $title = strip_tags($_POST['title']);
+                $description = strip_tags($_POST['description']);
+
+                $contactModel = new ContactsModel;
+                $contactModel->setId($contact->id)->setTitle($title)->setDescription($description);
+                $contactModel->update();
+
+                header('Location: ../contacts');
+                exit;
+            }
+
+            $form = new Form;
+
+            $form->startForm()
+                ->startDiv()->addInput('text', 'title', ['placeholder' => 'Title', 'value' => $contact->title, 'autofocus' => true])->endDiv()
+                ->startDiv()->addInput('text', 'description', ['placeholder' => 'Description', 'value' => $contact->description])->endDiv()
+                ->addButton('Validate', ['type' => 'submit', 'class' => 'link-form'])
+                ->endForm();
+            
+            $this->title = 'PlaygroundPOO | Admin | Contacts | '.$contact->id;
+            $this->render("admin/contactId", ['form' => $form->create()]);
+        }
+
+        else
+        {
+            header('Location: users/login');
+            exit;
+        }
+    }
+
+    public function deleteContact(int $id)
+    {
+        if (Functions::sessionAdmin())
+        {
+            $contactModel = new ContactsModel;
+            $contactModel->delete($id);
+
+            header('Location: ../contacts');
+            exit;
         }
 
         else

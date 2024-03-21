@@ -11,10 +11,10 @@
                 <a class="link-form" href="<?= $pathRedirect; ?>contacts/<?= $contact->id ?>">Preview</a>
             </div>
             <div class="margin-bottom">
-                <a class="link-form" href="<?= $pathRedirect; ?>mcontacts/<?= $contact->id ?>">Modify</a>
+                <a class="link-form" href="<?= $pathRedirect; ?>admin/updateContact/<?= $contact->id ?>">Update</a>
             </div>
             <div>
-                <a class="link-form" href="<?= $pathRedirect; ?>dcontacts/<?= $contact->id ?>">Delete</a>
+                <a class="link-form" href="<?= $pathRedirect; ?>admin/deleteContact/<?= $contact->id ?>">Delete</a>
             </div>
         </article>
     <?php endforeach; ?>

@@ -62,7 +62,7 @@ class ShipsController extends Controller
 
             if (!$ship)
             {
-                header('Location: ../users/ships/');
+                header('Location: ../users/ships');
                 exit;
             }
 
