@@ -55,9 +55,10 @@ class Form
         return $this;
     }
 
-    public function startDiv(): self
+    public function startDiv(array $attributes = []): self
     {
-        $this->formCode .= '<div>';
+        $this->formCode .= '<div';
+        $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';
         return $this;
     }
 
