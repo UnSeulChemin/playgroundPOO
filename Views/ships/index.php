@@ -33,5 +33,6 @@
                 <a class="link-paginate active"><?php echo $count; ?></a>
             <?php endif; ?>
         <?php endfor; ?>
+
     </nav>
 </section>
