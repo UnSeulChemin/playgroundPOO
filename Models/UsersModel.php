@@ -65,9 +65,18 @@ class UsersModel extends Model
         return $this->roles;
     }
 
-    public function setRoles($roles)
+    public function setRoles($roles, string $method = "decode")
     {
-        $this->roles = json_decode($roles);
-        return $this;
+        if ($method == "encode")
+        {
+            $this->roles = json_encode($roles);
+            return $this;
+        }
+
+        if ($method == "decode")
+        {
+            $this->roles = json_decode($roles);
+            return $this;
+        }
     }
 }
