@@ -53,6 +53,11 @@ class Model extends Db
         return $this->requete("SELECT * FROM {$this->table} WHERE id = $id")->fetch();
     }
 
+    public function findByUsersId(int $id)
+    {
+        return $this->requete("SELECT * FROM {$this->table} WHERE users_id = $id")->fetchAll();
+    }
+
     public function create()
     {
         $fields = [];

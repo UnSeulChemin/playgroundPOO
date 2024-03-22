@@ -12,7 +12,7 @@ class WaifusController extends Controller
         {
             $waifuModel = new WaifusModel;
             $pathRedirect = Functions::pathRedirect();
-            $waifus = $waifuModel->findAll();
+            $waifus = $waifuModel->findByUsersId($_SESSION['user']['id']);
     
             $this->title = 'PlaygroundPOO | Waifus';
             $this->render("waifus/index", ["waifus" => $waifus, "pathRedirect" => $pathRedirect]);
