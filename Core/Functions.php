@@ -23,7 +23,7 @@ class Functions
 
     public static function sessionAdmin(): bool
     {
-        if (isset($_SESSION["user"]) && str_contains($_SESSION['user']['roles'], 'ROLE_ADMIN'))
+        if (isset($_SESSION["user"]) && in_array("ROLE_ADMIN", $_SESSION["user"]["roles"]))
         {
             return true;
         }
