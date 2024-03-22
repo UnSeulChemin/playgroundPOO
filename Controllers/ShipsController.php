@@ -41,7 +41,7 @@ class ShipsController extends Controller
             }
 
             $this->title = 'PlaygroundPOO | Ship | '.$ship->name;
-            $this->render('ships/show', ["ship" => $ship, "pathRedirect" => $pathRedirect]);
+            $this->render('ships/ship', ["ship" => $ship, "pathRedirect" => $pathRedirect]);
         }
 
         else

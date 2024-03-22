@@ -24,4 +24,29 @@ class WaifusController extends Controller
             exit;
         }
     }
+
+    public function waifu(int $id)
+    {
+        if (Functions::sessionUser())
+        {
+            $waifuModel = new WaifusModel;
+            $pathRedirect = Functions::pathRedirect();
+            $waifu = $waifuModel->find($id);
+
+            if (!$waifu || $waifu->users_id !== $_SESSION['user']['id'])
+            {
+                header('Location: ../users/ships');
+                exit;
+            }
+
+            $this->title = 'PlaygroundPOO | Waifus | '.$waifu->name;
+            $this->render('waifus/waifu', ["waifu" => $waifu, "pathRedirect" => $pathRedirect]);
+        }
+
+        else
+        {
+            header('Location: ../users/login');
+            exit;
+        }
+    }
 }
