@@ -12,7 +12,9 @@ class WaifusController extends Controller
         {
             $waifuModel = new WaifusModel;
             $pathRedirect = Functions::pathRedirect();
-            $waifus = $waifuModel->findByUsersId($_SESSION['user']['id']);
+
+            $sessionId = $_SESSION['user']['id'];
+            $waifus = $waifuModel->findBy(['users_id' => $sessionId]);
     
             $this->title = 'PlaygroundPOO | Waifus';
             $this->render("waifus/index", ["waifus" => $waifus, "pathRedirect" => $pathRedirect]);
@@ -33,7 +35,10 @@ class WaifusController extends Controller
             $pathRedirect = Functions::pathRedirect();
             $waifu = $waifuModel->find($id);
 
-            if (!$waifu || $waifu->users_id !== $_SESSION['user']['id'])
+            $waifuUsersId = $waifu->users_id;
+            $sessionId = $_SESSION['user']['id'];
+
+            if (!$waifu || $waifuUsersId !== $sessionId)
             {
                 header('Location: ../users/ships');
                 exit;
