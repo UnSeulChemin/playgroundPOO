@@ -1,7 +1,7 @@
 <section class="section-content">
 
     <h2>Waifus</h2>
-<?php var_dump($waifus); ?>
+
     <section class="section-card">
         <?php foreach($waifus as $waifu): ?>
             <div class="div-card">
