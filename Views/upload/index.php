@@ -14,12 +14,6 @@
         </div>
     <?php endif; ?>
 
-    <form method="post" enctype="multipart/form-data">
-        <div class="flex-center">
-            <label class="label-file" for="file">Image</label>
-            <input class="none" type="file" id="file" name="image">
-        </div>
-        <button class="link-form" type="submit">Envoyer</button>
-    </form>
+    <?= $fileForm; ?>
 
 </section>

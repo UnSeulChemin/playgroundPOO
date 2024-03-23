@@ -68,8 +68,17 @@ class UploadController extends Controller
                 $_SESSION['warning'] = !empty($_FILES) ? "File is empty." : '';
             }
 
+            $form = new Form;
+    
+            $form->startForm("post", "#", ["enctype" => "multipart/form-data"])
+                ->startDiv(["class" => "flex-center"])
+                    ->addLabelFor('file', 'Image', ['class' => 'label-file'])->addInput('file', 'image', ['id' => 'file', 'class' => 'none'])
+                ->endDiv()
+                ->addButton('Validate', ['type' => 'submit', 'class' => 'link-form'])
+            ->endForm();
+
             $this->title = 'PlaygroundPOO | Upload';
-            $this->render('upload/index');
+            $this->render('upload/index', ['fileForm' => $form->create()]);
         }
 
         else
