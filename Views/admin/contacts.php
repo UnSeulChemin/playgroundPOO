@@ -4,7 +4,10 @@
 
     <?php foreach($contacts as $contact): ?>
         <article class="article-content">
-            <p class="bold"><?= $contact->title ?></p>
+            <div class="flex-center">
+                <p class="bold"><?= $contact->title ?></p>
+                <input type="checkbox" class="checkbox" id="<?= $contact->id ?>" <?= $contact->favorite == "Y" ? 'checked' : '' ?> data-id="<?= $contact->id ?>">
+            </div>
             <p><?= $contact->description ?></p>
             <p><?= date('d/m/Y', strtotime($contact->created_at)); ?></p>
             <div class="margin-bottom">

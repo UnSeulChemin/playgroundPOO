@@ -13,5 +13,7 @@
 <?php require_once "_partials/_header.php"; ?>
 <main><?= $content ?></main>
 
+
 </body>
+<script src="<?= $pathRedirect; ?>public/js/scripts.js"></script>
 </html>

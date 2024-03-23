@@ -6,6 +6,7 @@ class ContactsModel extends Model
     protected $id;
     protected $title;
     protected $description;
+    protected $favorite;
     protected $users_id;
     protected $created_at;
 
@@ -44,6 +45,18 @@ class ContactsModel extends Model
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
+    }
+
+    public function getFavorite()
+    {
+        return $this->favorite;
+    }
+
+    public function setFavorite($favorite)
+    {
+        $this->favorite = $favorite;
+
         return $this;
     }
 

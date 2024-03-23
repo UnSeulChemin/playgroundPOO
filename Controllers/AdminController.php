@@ -127,4 +127,25 @@ class AdminController extends Controller
             exit;
         }
     }
+
+    public function favoriteContact(int $id)
+    {
+        if (Functions::sessionAdmin())
+        {
+            $contactModel = new ContactsModel;
+            $contactArray = $contactModel->find($id);
+
+            if (!$contactArray)
+            {
+                header('Location: ../contacts');
+                exit;
+            }
+
+            $contact = $contactModel->hydrate($contactArray);
+
+            $favorite = $contact->getFavorite() == 'N' ? 'Y' : 'N'; 
+            $contact->setFavorite($favorite);
+            $contact->update();
+        }
+    }
 }
