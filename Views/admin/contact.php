@@ -4,10 +4,10 @@
    
     <article class="article-content">
         <div>
-            <p class="bold"><?= $contact->title ?></p>
+            <p class="bold"><?= strip_tags($contact->title) ?></p>
         </div>
         <div>
-            <p><?= $contact->description ?></p>
+            <p><?= strip_tags($contact->description) ?></p>
         </div>
         <div>
             <p><?= date('d/m/Y', strtotime($contact->created_at)); ?></p>
