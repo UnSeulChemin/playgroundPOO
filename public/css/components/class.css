@@ -94,6 +94,15 @@ Margin, Flash, Section, Article, Div, Flex
     margin-right: 0;
 }
 
+.checkbox
+{
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+
+    margin: 0 0 0 10px;
+}
+
 /* Margin */
 .margin-right-li
 {
@@ -182,9 +191,19 @@ Margin, Flash, Section, Article, Div, Flex
     margin-bottom: 0;
 }
 
-.article-content p:last-of-type
+.article-content p
+{
+    margin-bottom: 0;
+}
+
+.article-content div
 {
     margin-bottom: 15px;
+}
+
+.article-content div:last-child
+{
+    margin-bottom: 0;
 }
 
 /* Div */

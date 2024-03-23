@@ -8,12 +8,16 @@
                 <p class="bold"><?= $contact->title ?></p>
                 <input type="checkbox" class="checkbox" id="<?= $contact->id ?>" <?= $contact->favorite == "Y" ? 'checked' : '' ?> data-id="<?= $contact->id ?>">
             </div>
-            <p><?= $contact->description ?></p>
-            <p><?= date('d/m/Y', strtotime($contact->created_at)); ?></p>
-            <div class="margin-bottom">
+            <div>
+                <p><?= $contact->description ?></p>
+            </div>
+            <div>
+                <p><?= date('d/m/Y', strtotime($contact->created_at)); ?></p>
+            </div>
+            <div>
                 <a class="link-form" href="<?= $pathRedirect; ?>admin/contact/<?= $contact->id ?>">Preview</a>
             </div>
-            <div class="margin-bottom">
+            <div>
                 <a class="link-form" href="<?= $pathRedirect; ?>admin/updateContact/<?= $contact->id ?>">Update</a>
             </div>
             <div>
