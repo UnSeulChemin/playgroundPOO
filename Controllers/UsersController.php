@@ -13,20 +13,44 @@ class UsersController extends Controller
         {
             if (Form::validate($_POST, ['email', 'password']))
             {
-                $email = strip_tags($_POST['email']);
-                $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
-                $roles = ["ROLE_USER"];
-    
-                $userModel = new UsersModel;
-                $userModel->setEmail($email)->setPassword($password)->setRoles($roles, "encode");
-    
-                if ($userModel->create())
+                if (Form::validateEmail($_POST, ['email']))
                 {
-                    $userArray = $userModel->findOneByEmail($email);
-                    $user = $userModel->hydrate($userArray);
-                    $user->setSession();
-                    header("Location: .././");
-                    exit;
+                    $email = strip_tags($_POST['email']);
+
+                    $userModel = new UsersModel;
+                    $user = $userModel->findBy(["Email" => $email]);
+
+                    if (!$user)
+                    {
+                        $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
+                        $roles = ["ROLE_USER"];
+            
+                        $userModel = new UsersModel;
+                        $userModel->setEmail($email)->setPassword($password)->setRoles($roles, "encode");
+            
+                        if ($userModel->create())
+                        {
+                            $userArray = $userModel->findOneByEmail($email);
+                            $user = $userModel->hydrate($userArray);
+                            $user->setSession();
+                            header("Location: .././");
+                            exit;
+                        }
+                    }
+
+                    else
+                    {
+                        $_SESSION['warning'] = !empty($_POST) ? "Email already taken." : '';
+                        $email = isset($_POST['email']) ? strip_tags($_POST['email']) : '';
+                        $password = isset($_POST['password']) ? strip_tags($_POST['password']) : '';
+                    }
+                }
+
+                else
+                {
+                    $_SESSION['warning'] = !empty($_POST) ? "Incorrect email format." : '';
+                    $email = isset($_POST['email']) ? strip_tags($_POST['email']) : '';
+                    $password = isset($_POST['password']) ? strip_tags($_POST['password']) : '';
                 }
             }
     

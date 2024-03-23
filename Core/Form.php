@@ -22,6 +22,18 @@ class Form
         return true;
     }
 
+    public static function validateEmail(array $form, array $emails)
+    {
+        foreach ($emails as $email)
+        {
+            if (!filter_var($form[$email], FILTER_VALIDATE_EMAIL))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private function addAttributes(array $attributes): string
     {
         $string = '';
