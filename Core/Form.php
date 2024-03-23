@@ -22,6 +22,22 @@ class Form
         return true;
     }
 
+    public static function validateFiles(array $form, array $files)
+    {
+        foreach ($files as $file)
+        {
+            if (!empty($form[$file]))
+            {
+                if (isset($form[$file]) && $form[$file]["error"] === 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+    }
+
     public static function validateEmail(array $form, array $emails)
     {
         foreach ($emails as $email)

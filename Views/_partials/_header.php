@@ -12,6 +12,7 @@
                 <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>waifus">Waifus</a></li>
                 <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>ships">Ships</a></li>
                 <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>contacts">Contacts</a></li>
+                <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>upload">Upload</a></li>
                 <li class="margin-right-li"><a class="link-menu" href="<?= $pathRedirect ?>profile">Profile</a></li>
                 <li><a class="link-menu" href="<?= $pathRedirect ?>users/logout">Logout</a></li>
             <?php else: ?>
