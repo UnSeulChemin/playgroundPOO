@@ -27,7 +27,7 @@ class AdminController extends Controller
         if (Functions::sessionAdmin())
         {
             $contactModel = new ContactsModel;
-            $contacts = $contactModel->findAll();
+            $contacts = $contactModel->findAllOrderByASC("favorite");
             $pathRedirect = Functions::pathRedirect();
 
             $this->title = 'PlaygroundPOO | Admin | Contacts';

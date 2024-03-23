@@ -32,6 +32,12 @@ class Model extends Db
         return $query->fetchAll();
     }
 
+    public function findAllOrderByASC($targets)
+    {
+        $query = $this->requete("SELECT * FROM {$this->table} ORDER BY $targets ASC");
+        return $query->fetchAll();
+    }
+
     public function findBy(array $targets)
     {
         $fields = [];
