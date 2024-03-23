@@ -38,6 +38,8 @@ class Form
     {
         foreach ($passwords as $password)
         {
+            // at least 5 characters, at least 1 numeric character, at least 1 lowercase letter,
+            // at least 1 uppercase letter, at least 1 special character.
             $passwordPattern = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?([^\w\s]|[_])).{5,}$/";
             if (!preg_match($passwordPattern, $form[$password]))
             {
