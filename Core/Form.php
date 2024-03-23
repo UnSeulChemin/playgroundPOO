@@ -34,6 +34,19 @@ class Form
         return true;
     }
 
+    public static function validatePassword(array $form, array $passwords)
+    {
+        foreach ($passwords as $password)
+        {
+            $passwordPattern = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?([^\w\s]|[_])).{5,}$/";
+            if (!preg_match($passwordPattern, $form[$password]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private function addAttributes(array $attributes): string
     {
         $string = '';

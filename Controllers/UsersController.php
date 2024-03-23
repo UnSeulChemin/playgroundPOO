@@ -22,19 +22,29 @@ class UsersController extends Controller
 
                     if (!$user)
                     {
-                        $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
-                        $roles = ["ROLE_USER"];
-            
-                        $userModel = new UsersModel;
-                        $userModel->setEmail($email)->setPassword($password)->setRoles($roles, "encode");
-            
-                        if ($userModel->create())
+                        if (Form::validatePassword($_POST, ['password']))
                         {
-                            $userArray = $userModel->findOneByEmail($email);
-                            $user = $userModel->hydrate($userArray);
-                            $user->setSession();
-                            header("Location: .././");
-                            exit;
+                            $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
+                            $roles = ["ROLE_USER"];
+                
+                            $userModel = new UsersModel;
+                            $userModel->setEmail($email)->setPassword($password)->setRoles($roles, "encode");
+                
+                            if ($userModel->create())
+                            {
+                                $userArray = $userModel->findOneByEmail($email);
+                                $user = $userModel->hydrate($userArray);
+                                $user->setSession();
+                                header("Location: .././");
+                                exit;
+                            }
+                        }
+                        
+                        else
+                        {
+                            $_SESSION['warning'] = !empty($_POST) ? "Password not enough strong." : '';
+                            $email = isset($_POST['email']) ? strip_tags($_POST['email']) : '';
+                            $password = isset($_POST['password']) ? strip_tags($_POST['password']) : '';
                         }
                     }
 
